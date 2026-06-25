@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E-Commerce Store</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>My E-Commerce Store</h1>
+
+<div class="products">
+
+{% for p in products %}
+
+<div class="product">
+
+    <img src="/static/{{ p[3] }}">
+
+    <h2>{{ p[1] }}</h2>
+
+    <p>₹{{ p[2] }}</p>
+
+    <button>Add To Cart</button>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
