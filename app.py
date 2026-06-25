@@ -5,25 +5,13 @@ app = Flask(__name__)
 @app.route('/')
 def home():
 
-    conn = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="Mohit",
-        database="ecommerce_db"
-    )
+   products = [
+    (1, "Shirt", 999, "shirt.jpg"),
+    (2, "Shoes", 1999, "shoes.jpg"),
+    (3, "Watch", 1499, "watch.jpg")
+]
 
-    cursor = conn.cursor()
-
-    cursor.execute("SELECT * FROM products")
-
-    products = cursor.fetchall()
-
-    conn.close()
-
-    return render_template(
-        "index.html",
-        products=products
-    )
+   return render_template("index.html", products=products)
 
 if __name__ == '__main__':
     app.run(debug=True)
